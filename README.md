@@ -35,7 +35,7 @@ $> npm run dev
 + Mongoose
  
   ## Запуск
-  | ЗАПРОС | ОТВЕТ | 
+| ЗАПРОС | ОТВЕТ | 
 | :---         |     :---       |  
 | POST `api-news.tk/signup`   | Регистрация нового пользователя     |
 | POST `api-news.tk/signin`   | Логин     |
