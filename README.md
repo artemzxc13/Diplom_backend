@@ -10,7 +10,7 @@
 
     Клонировать репозиторий
 
-$> git clone https://github.com/artemzxc13/Diplom_backend/edit/level1/
+$> git clone https://github.com/artemzxc13/Diplom_backend/level1/
 
     Установить зависимости
 
