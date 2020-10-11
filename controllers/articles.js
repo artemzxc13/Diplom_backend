@@ -21,15 +21,11 @@ const createArticle = (async (req, res, next) => {
   }
 });
 
-const getArticles = (async (req, res, next) => {
-  try {
-    const articles = await Article.find({})
-      .sort({ createdAt: -1 });
-    return res.status(200).send({ data: articles });
-  } catch (err) {
-    return next(err);
-  }
-});
+const getArticles = (req, res, next) => {
+  Article.find({ owner: req.user._id })
+    .then((articles) => res.send({ data: articles }))
+    .catch(next);
+};
 
 const deleteArticle = (req, res, next) => {
   if (mongoose.Types.ObjectId.isValid(req.params.articleId)) {
