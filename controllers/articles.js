@@ -42,7 +42,7 @@ const deleteArticle = (req, res, next) => {
             }))
             .catch(next);
         }
-        return next(new ForbiddenError('Вы не можете удалять ужие новости'));
+        return next(new ForbiddenError('Вы не можете удалять чужие новости'));
       })
       .catch(next);
   }
