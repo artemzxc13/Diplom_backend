@@ -44,7 +44,7 @@ const login = (req, res, next) => User.findUserByCredentials(req.body.email, req
       .send({ message: 'Вход выполнен' })
       .end();
   })
-  .catch(() => next(new UnauthorizedError({ message: 'Ошибка авторизации' })));
+  .catch(() => next(new UnauthorizedError('Ошибка авторизации')));
 
 const getUser = (req, res, next) => {
   console.log();
