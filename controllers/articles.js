@@ -35,22 +35,22 @@ const deleteArticle = (req, res, next) => {
   if (mongoose.Types.ObjectId.isValid(req.params.articleId)) {
     return Article.findById(req.params.articleId)
       .select('owner')
-      .orFail(new NotFoundError({ message: 'Статья с этим id не найдена' }))
+      .orFail(new NotFoundError('Статья с этим id не найдена'))
       .then((article) => {
         if (article.owner.toString() === req.user._id) {
           return Article.deleteOne(article)
-            .orFail(new NotFoundError({ message: 'Статья с этим id не найдена' }))
+            .orFail(new NotFoundError('Статья с этим id не найдена'))
             .then((deletedArticle) => res.send({
               data: deletedArticle,
               message: 'Статья удалена',
             }))
             .catch(next);
         }
-        return next(new ForbiddenError({ message: 'Вы не можете удалять ужие новости' }));
+        return next(new ForbiddenError('Вы не можете удалять ужие новости'));
       })
       .catch(next);
   }
-  return next(new BadRequestError({ message: 'Некорректный формат id' }));
+  return next(new BadRequestError('Некорректный формат id'));
 };
 
 module.exports = {
