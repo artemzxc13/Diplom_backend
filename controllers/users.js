@@ -27,7 +27,7 @@ const createUser = (req, res, next) => {
           error = new ConflictError();
           return next(error);
         }
-        error = new BadRequestError({ message: 'Переданы некорректные данные' });
+        error = new BadRequestError('Переданы некорректные данные');
       }
       return next(error);
     });
